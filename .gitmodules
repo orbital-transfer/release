@@ -1,0 +1,3 @@
+[submodule "project-renard/curie"]
+	path = project-renard/curie
+	url = https://github.com/project-renard/curie.git
