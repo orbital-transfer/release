@@ -22,13 +22,14 @@ cpanm -nq XML::Parser
 cpanm -nq Perl::PrereqScanner || exit $?
 ( export PERL5OPT=""; cpanm -nq PAR::Packer ) || exit $?
 
-perl $(which scan-perl-prereqs) project-renard/devops/script/mswin/msys2-dep-files.pl | cpanm || exit $?
+perl $(which scan-perl-prereqs) project-renard/devops/script/mswin/msys2-dep-files.pl | cpanm -nq || exit $?
 
 ./project-renard/devops/script/mswin/msys2-dep-files.pl files project-renard/curie/msys2-mingw64-packages > msys2-mingw64-packages.yml || exit $?
 
 ./project-renard/devops/script/mswin/msys2-dep-files.pl copy $PREFIX < msys2-mingw64-packages.yml || exit $?
 
-perl $(which pp) -vvv -n --gui -B -o $PREFIX/curie.exe project-renard/curie/bin/curie.pl || exit $?
+perl $(which pp) -vvv -n -B --gui -o $PREFIX/curie-gui.exe     project-renard/curie/bin/curie.pl || exit $?
+perl $(which pp) -vvv -n -B       -o $PREFIX/curie-console.exe project-renard/curie/bin/curie.pl || exit $?
 cp -puvR project-renard/curie/lib $PREFIX || exit $?
 
 ( cd project-renard/curie && cpanm -L $PREFIX/perl5 -nq --installdeps . ) || exit $?

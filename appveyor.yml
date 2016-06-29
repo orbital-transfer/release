@@ -12,6 +12,10 @@ environment:
 install:
   # running under CI
   - set CI_TESTING=1
+  - set RELEASE_TYPE=-rc
+  - set ARCH=%MSYS2_ARCH%
+  - set VERSION=0.0.%APPVEYOR_BUILD_NUMBER%%RELEASE_TYPE%
+  - set SUFFIX=%ARCH%-%VERSION%
   - '%APPVEYOR_BUILD_FOLDER%\dev\ci\install.bat'
   - 'echo End intall at: & time /t'
 
@@ -19,8 +23,8 @@ build_script:
   - 'echo Nothing to build'
 
 artifacts:
-  - path: build/project-renard-${APPVEYOR_BUILD_VERSION}
-    name: project-renard-${APPVEYOR_BUILD_VERSION}
+  - path: build/project-renard-$(SUFFIX)
+    name: project-renard-$(SUFFIX)
 
 deploy:
 - provider: BinTray
@@ -30,4 +34,5 @@ deploy:
   subject: project-renard # organisation
   repo: project-renard    # repo name
   package: project-renard-msys2-mingw64
+  version: $(VERSION)
   publish: false
