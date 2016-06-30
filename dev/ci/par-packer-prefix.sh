@@ -35,4 +35,4 @@ cp -puvR project-renard/curie/lib $PREFIX || exit $?
 ( cd project-renard/curie && cpanm -L $PREFIX/perl5 -nq --installdeps . ) || exit $?
 cpanm -L $PREFIX/perl5 -nq Win32::HideConsole || exit $?
 
-find $PREFIX -type f -name "*.exe" ! \( -name "curie.exe" -o -name "mutool.exe" \) -delete || exit $?
+find $PREFIX -type f -name "*.exe" ! \( -name "curie*.exe" -o -name "mutool.exe" \) -delete || exit $?
