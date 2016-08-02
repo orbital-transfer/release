@@ -17,7 +17,7 @@ IF %COMPILER%==msys2 (
   @echo on
   SET "PATH=C:\%MSYS2_DIR%\%MSYSTEM%\bin;C:\%MSYS2_DIR%\usr\bin;%PATH%"
   bash -lc "cd $APPVEYOR_BUILD_FOLDER; ./dev/script/get-aux-repo"
-  bash -lc "cd $APPVEYOR_BUILD_FOLDER; ./project-renard/curie/dev/ci/appveyor/update-msys2.sh"
-  bash -lc "cd $APPVEYOR_BUILD_FOLDER; APPVEYOR_BUILD_FOLDER=$APPVEYOR_BUILD_FOLDER/project-renard/curie ./project-renard/curie/dev/script/install-native-dep"
+  bash -lc "cd $APPVEYOR_BUILD_FOLDER; ./project-renard/devops/script/from-curie/ci/appveyor/update-msys2.sh"
+  bash -lc "cd $APPVEYOR_BUILD_FOLDER; APPVEYOR_BUILD_FOLDER=$APPVEYOR_BUILD_FOLDER/project-renard/curie ./project-renard/devops/script/from-curie/script/install-native-dep"
   bash -lc "cd $APPVEYOR_BUILD_FOLDER; ./dev/ci/par-packer-prefix.sh $APPVEYOR_BUILD_FOLDER/build/project-renard-$SUFFIX"
 )
