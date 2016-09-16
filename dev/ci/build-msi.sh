@@ -19,6 +19,7 @@ cd $PREFIX
 
 MAIN_WXS="curie.wxs"
 MAIN_WIXOBJ="curie.wixobj"
+cpanm -n Template Data::UUID # requried for wix-gen.pl
 perl $APPVEYOR_BUILD_FOLDER/dev/ci/wix-gen.pl > $MAIN_WXS
 
 
