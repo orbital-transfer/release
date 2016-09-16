@@ -20,4 +20,5 @@ IF %COMPILER%==msys2 (
   bash -lc "cd $APPVEYOR_BUILD_FOLDER; ./project-renard/devops/script/from-curie/ci/appveyor/update-msys2.sh"
   bash -lc "cd $APPVEYOR_BUILD_FOLDER; APPVEYOR_BUILD_FOLDER=$APPVEYOR_BUILD_FOLDER/project-renard/curie ./project-renard/devops/script/from-curie/script/install-native-dep"
   bash -lc "cd $APPVEYOR_BUILD_FOLDER; ./dev/ci/par-packer-prefix.sh $APPVEYOR_BUILD_FOLDER/build/project-renard-$SUFFIX"
+  bash -lc "cd $APPVEYOR_BUILD_FOLDER; ./dev/ci/build-msi.sh $APPVEYOR_BUILD_FOLDER/build/project-renard-$SUFFIX"
 )
