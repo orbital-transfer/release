@@ -1,0 +1,13 @@
+#!/bin/sh
+
+if [ -n "$APPVEYOR_BUILD_FOLDER" ]; then
+	cd $APPVEYOR_BUILD_FOLDER
+fi
+
+# Appveyor does not do a recursive clone by default
+git submodule update --init --recursive
+
+for repo in devops; do
+	git clone https://github.com/project-renard/$repo.git  project-renard/$repo || return $?
+done
+. project-renard/devops/ENV.sh

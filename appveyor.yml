@@ -1,0 +1,38 @@
+version: 1.0.{build}
+
+environment:
+  matrix:
+  - COMPILER: msys2
+    PLATFORM: x64
+    MSYS2_ARCH: x86_64
+    MSYS2_DIR: msys64
+    MSYSTEM: MINGW64
+    BIT: 64
+
+install:
+  # running under CI
+  - set CI_TESTING=1
+  - set RELEASE_TYPE=-rc
+  - set ARCH=%MSYS2_ARCH%
+  - set VERSION=0.0.%APPVEYOR_BUILD_NUMBER%%RELEASE_TYPE%
+  - set SUFFIX=%ARCH%-%VERSION%
+  - '%APPVEYOR_BUILD_FOLDER%\dev\ci\install.bat'
+  - 'echo End intall at: & time /t'
+
+build_script:
+  - 'echo Nothing to build'
+
+artifacts:
+  - path: build/project-renard-$(SUFFIX)
+    name: project-renard-$(SUFFIX)
+
+deploy:
+- provider: BinTray
+  username: zmughal
+  api_key:
+    secure: MpoIHAgLifGsvrVxVXNa8rhyhR7xOkygc//sqsrVd0ymyI19bnRdN49kp7z3QDxo
+  subject: project-renard # organisation
+  repo: project-renard    # repo name
+  package: project-renard-msys2-mingw64
+  version: $(VERSION)
+  publish: false
