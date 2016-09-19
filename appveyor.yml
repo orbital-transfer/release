@@ -23,7 +23,7 @@ build_script:
   - 'echo Nothing to build'
 
 artifacts:
-  - path: build/project-renard-$(SUFFIX)
+  - path: build/project-renard-$(SUFFIX).msi
     name: project-renard-$(SUFFIX)
 
 deploy:
