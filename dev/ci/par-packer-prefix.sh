@@ -28,8 +28,8 @@ perl $(which scan-perl-prereqs) project-renard/devops/script/mswin/msys2-dep-fil
 
 ./project-renard/devops/script/mswin/msys2-dep-files.pl copy $PREFIX < msys2-mingw64-packages.yml || exit $?
 
-perl $(which pp) -vvv -n -B --gui -o $PREFIX/curie-gui.exe     project-renard/curie/bin/curie.pl || exit $?
-perl $(which pp) -vvv -n -B       -o $PREFIX/curie-console.exe project-renard/curie/bin/curie.pl || exit $?
+perl $(which pp) -vvv -n -B --gui -o $PREFIX/curie-gui.exe     project-renard/curie/bin/curie || exit $?
+perl $(which pp) -vvv -n -B       -o $PREFIX/curie-console.exe project-renard/curie/bin/curie || exit $?
 cp -puvR project-renard/curie/lib $PREFIX || exit $?
 
 ( cd project-renard/curie && cpanm -L $PREFIX/perl5 -nq --installdeps . ) || exit $?
