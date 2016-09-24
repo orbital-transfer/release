@@ -1,0 +1,14 @@
+os: osx
+osx_image: xcode8
+before_install:
+  - brew update
+  - brew tap timsutton/formulae
+  - brew install brew-pkg
+install:
+  - brew tap project-renard/project-renard
+  - brew unlink cmake
+  - brew install xz intltool gnome-doc-utils itstool sphinx-doc cmake
+  - brew install 'curie'
+script:
+  - brew pkg --with-deps 'curie'
+  - du -h curie-*.pkg
