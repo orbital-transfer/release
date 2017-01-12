@@ -16,7 +16,7 @@ deploy:
   provider: releases
   api_key:
     secure: pDzl4TttrSyDaayLAC7+l7Vrcmbe0Q5nWGomoILqxQhA1j/HtesLlkJAtbuajx+DNTia7tBbTljlCvoucYgyUxwm9gKss3NFweKlFYryE6XfeXuDkNe7BqZxGhlhpSN/0c8cPn7Dr49Yk3yMdeYU8uWE3Jz317db26Uhnw5D+CdtGtb2KlZM9JMy0hGSZaCCA+GXxcVkvXS5OEERCc/5UM0bmQO8+uwYBIok2K5eY5syeCcw4L+APF5G1zvcMRJxOfFm60pKOLTaC+70AxdjnOyfO+e65W3Kbyf4usTLcHUt4JWOPOd6BGmNyaKeEs+nrb3HW6xFsyoI9TB8cWR7OCwh1CITN5Ww46pXVG+ckFHRVTPBqc3nwPLrCp9VajBMDUod6yu5XIr/sGRTsvIJCY5NCOOrl4iFObp47ic1+uaBRnUqJHPRLUCJrb0+Sf1XnvuCkAjWrkYnaNLbKl6bqIHbm/zTn9XezM4ZP5gKnmdXQ+Mn52G0F8+mh63G4W04s+agizj895jMflccp7AxqnN/Q/5IEPQcHD6DDc/82LQu0joErzg24qWyBsTOe+mVWGHwYLZBaBZ9aJ7o14VGrBYfuqcMO5HNbYWxc4z3Ikr/DqMVug/vIwxJ6Xa82ozChXEpr26NX2GwF7JsJeBRAB0KyRaSQYdWiZNiZWhtZ4I=
-  file: ~/ProjectRenard-Installer.dmg
+  file: ${HOME}/ProjectRenard-Installer.dmg
   on:
     repo: project-renard/release
   overwrite: true
