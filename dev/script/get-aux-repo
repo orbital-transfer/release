@@ -7,7 +7,7 @@ fi
 # Appveyor does not do a recursive clone by default
 git submodule update --init --recursive
 
-for repo in devops; do
+for repo in devops travis-homebrew-bottle; do
 	git clone https://github.com/project-renard/$repo.git  project-renard/$repo || return $?
 done
 . project-renard/devops/ENV.sh
