@@ -5,15 +5,11 @@ before_install:
   - brew update
   - brew tap project-renard/project-renard
 install:
-  - export BOTTLE_DIR=`cd bottle/ && pwd`
-  - export BASE_DIR=`cd project-renard/travis-homebrew-bottle && pwd`
-  - echo "$BOTTLE_DIR"
-  - echo "$BASE_DIR"
+  - export BASE_DIR=`cd project-renard/travis-homebrew-bottle && pwd`; echo "$BASE_DIR"
   - ( cat $BASE_DIR/Project-Renard-base.tgz.part.* > ~/Project-Renard-base.tgz &&
       mkdir /Applications/Project-Renard.app && cd /Applications/Project-Renard.app && tar xzf ~/Project-Renard-base.tgz )
-  - cd dev/ci
-  - ./build-dmg.sh --bottle-dir $BOTTLE_DIR --use-bottle --steps build-only-non-deps --steps postinstall
-  - travis_wait 30 ./build-dmg.sh --bottle-dir $BOTTLE_DIR --use-bottle --steps dmg
+  - ( cd dev/ci && ./build-dmg.sh --steps build-only-non-deps --steps postinstall )
+  - ( cd dev/ci && travis_wait 30 ./build-dmg.sh --steps dmg )
 script:
   - du -h ~/ProjectRenard-Installer.dmg
 deploy:
